@@ -1,0 +1,170 @@
+.registration_wrapper{
+    min-height: 100vh;
+    width: 85vw;
+    max-width: 1900px;
+    margin: 0 auto;
+    font-size: 1.3rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.registration_infoBlock{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: #27187E;
+}
+
+.registration_infoBlock img{
+    height: 23rem;
+}
+
+.registration_signupBlock{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25rem;
+    text-align: center;
+    gap: 1rem;
+}
+
+.registration_signupBlock h3{
+    color: #27187E;
+}
+
+.registration_signupBlock_paragraph{
+    color: #5E79FD;
+    margin-bottom: 1rem;
+}
+
+.registration_signupBlock input{
+    width: 100%;
+}
+
+.registration_buttons{
+    background-color: #AEB8FE;
+    display: inline-block;
+    border-radius: 10px;
+
+    width: 100%;
+}
+
+.registration_buttons button{
+    /*width: 13rem;*/
+    /*height: 3rem;*/
+    padding: 10px 18px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background-color: #AEB8FE;
+    transition: background-color 0.3s ease;
+    color: #27187E;
+
+    width: calc(100%/2);
+}
+
+.registration_studentButton{
+
+}
+
+.registration_teacherButton{
+
+}
+
+.registration_signupBlockButton{
+    /*width: 23rem;*/
+}
+
+.registration_signupBlock button.active{
+    background-color: #5E79FD;
+    color: #F1F2F6;
+}
+
+.registration_signupBlockError{
+    color: #BA1200;
+}
+
+.registration_signupBlockToLogin{
+    color: #5E79FD;
+    font-size: 1rem;
+}
+
+.registration_signupBlockToLogin a{
+    color: #5E79FD;
+    font-weight: bold;
+}
+
+.registration_signupBlock_groups{
+    background-color: #AEB8FE;
+    border-radius: 10px;
+    border: 1px solid #AEB8FE;
+    width: 21rem;
+    height: 3rem;
+    padding: 10px 18px;
+    font-size: 1.3rem;
+    color: #27187E;
+
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.registration_signupBlock_groups select{
+    border: none;
+    background-color: #AEB8FE;
+    font-size: 1.3rem;
+    color: #27187E;
+    cursor: pointer;
+}
+
+.registration_signupBlock_groups option{
+
+}
+
+
+@media only screen and (max-width: 1024px) {
+    .registration_wrapper{
+        flex-direction: column;
+        padding: 3rem 1rem;
+        font-size: 1.1rem;
+    }
+
+    .registration_infoBlock{
+        margin-bottom: 1.8rem;
+    }
+
+    .registration_infoBlock img{
+        height: 13rem;
+    }
+
+    .registration_signupBlock div p{
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .registration_signupBlock{
+        width: 21rem;
+    }
+    .registration_buttons button{
+        font-size: 1rem;
+    }
+
+    .registration_infoBlock{
+        margin-bottom: 1rem;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    .registration_signupBlock{
+        width: 18rem;
+    }
+
+    .registration_buttons button{
+        font-size: 0.8rem;
+    }
+}

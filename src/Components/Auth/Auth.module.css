@@ -1,0 +1,303 @@
+.auth_wrapper{
+    min-height: 100vh;
+    width: 85vw;
+    max-width: 1900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.3rem;
+}
+
+.auth_infoBlock_title{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.auth_infoBlock_title img{
+    height: 18rem;
+}
+
+.auth_infoBlock{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.auth_infoBlock_title div{
+    display: flex;
+    flex-direction: column;
+}
+
+.auth_infoBlock_title h1{
+    font-size: 3.1rem;
+    margin-bottom: 1rem;
+    color: #27187E;
+    font-weight: bold;
+    width: 19rem;
+}
+
+.auth_infoBlock_title p{
+    color: #758BFD;
+    width: 21rem;
+}
+
+.auth_infoBlock_list{
+    display: flex;
+    font-size: 0.9rem;
+    gap: 1rem;
+
+    width: 85%;
+}
+
+.auth_infoBlock_list_item{
+    /*max-width: 13rem;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: calc(100%/3);
+}
+
+.auth_infoBlock_list_item div{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1.3rem;
+
+    width: 100%;
+}
+
+.auth_infoBlock_list_item h1{
+    color: #27187E;
+    /*font-size: 2.5rem;*/
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth_infoBlock_list_item p{
+    color: #758BFD;
+}
+
+.auth_loginBlock{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth_loginBlock img{
+    height: 10rem;
+    margin-bottom: 10px;
+}
+
+.auth_loginBlock h2{
+    margin-bottom: 2.5rem;
+}
+
+.auth_loginBlock_form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.3rem;
+
+    width: 25rem;
+}
+
+.auth_loginBlock_form input{
+    flex-grow: 1;
+}
+
+.auth_loginButton{
+    border-radius: 10px;
+    background: #5E79FD;
+
+    box-shadow: 3px 5px 10px 0px rgba(174, 184, 254, 0.70), -3px -4px 7px 0px rgba(239, 239, 239, 0.35) inset, 4px 4px 7px 0px rgba(248, 249, 254, 0.15) inset;
+    border: none;
+
+    width: 21rem;
+    height: 3rem;
+    padding: 10px 18px;
+    font-size: 1.3rem;
+    color: #ffffff;
+    cursor: pointer;
+    transition: ease-in-out 0.3s;
+
+    margin-bottom: 10px;
+}
+
+.auth_loginButton:hover{
+    background: #395bff;
+}
+
+.auth_loginBlock_registration{
+    color: #5E79FD;
+    font-size: 1rem;
+}
+
+.auth_loginBlock_registration a{
+    color: #5E79FD;
+    font-weight: bold;
+}
+
+.auth_buttons{
+    background-color: #AEB8FE;
+    /*display: inline-block;*/
+    border-radius: 10px;
+
+    display: flex;
+    width: 100%;
+}
+
+.auth_buttons button{
+    /*width: 13rem;*/
+    /*height: 3rem;*/
+    padding: 10px 18px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background-color: #AEB8FE;
+    transition: background-color 0.3s ease;
+    color: #27187E;
+    /*width: 12.1rem;*/
+    width: 100%;
+
+}
+
+.auth_studentButton{
+
+}
+
+.auth_teacherButton{
+
+}
+
+.auth_buttons button.active{
+    background-color: #5E79FD;
+    color: #F1F2F6;
+}
+
+@media only screen and (max-width: 1570px) {
+    .auth_wrapper{
+        flex-direction: column;
+
+        padding: 3rem 1rem;
+    }
+
+    .auth_infoBlock{
+        align-items: center;
+    }
+
+    .auth_infoBlock_list{
+        width: 85%;
+
+        margin-bottom: 3rem;
+    }
+}
+
+
+@media only screen and (max-width: 1024px) {
+    .auth_wrapper{
+        flex-direction: column;
+
+        padding: 3rem 1rem;
+        font-size: 1.1rem;
+    }
+
+    .auth_infoBlock_title{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .auth_infoBlock_title img{
+        height: 13rem;
+    }
+
+    .auth_infoBlock_title div{
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .auth_infoBlock_list{
+        /*width: 85%;*/
+
+        margin-bottom: 3rem;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .auth_infoBlock_list_item{
+        width: auto;
+        align-items: flex-start;
+    }
+
+    .auth_infoBlock_list_item div{
+        margin-bottom: 1rem;
+    }
+}
+
+
+@media only screen and (max-width: 480px) {
+    .auth_wrapper{
+        font-size: 1rem;
+    }
+
+    .auth_infoBlock_title{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .auth_infoBlock_title img{
+        height: 13rem;
+    }
+
+    .auth_infoBlock_title div{
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .auth_infoBlock_title h1{
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    /*.auth_infoBlock_list{*/
+    /*    !*width: 85%;*!*/
+
+    /*    margin-bottom: 3rem;*/
+    /*    flex-direction: column;*/
+    /*    gap: 3rem;*/
+    /*}*/
+
+    /*.auth_infoBlock_list_item{*/
+    /*    width: auto;*/
+    /*    align-items: flex-start;*/
+    /*}*/
+
+    /*.auth_infoBlock_list_item div{*/
+    /*    margin-bottom: 1rem;*/
+    /*}*/
+
+    .auth_loginBlock_form{
+        width: 18rem;
+    }
+
+    .auth_buttons button{
+        font-size: 0.8rem;
+    }
+}

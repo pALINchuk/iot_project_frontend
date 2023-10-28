@@ -1,0 +1,110 @@
+.home_wrapper{
+    color: #395bff;
+
+    min-height: 100vh;
+    width: 85vw;
+    max-width: 1900px;
+    margin: 0 auto;
+    font-size: 1.3rem;
+}
+
+.home_wrapper h1{
+    margin-bottom: 3rem;
+}
+
+.home_scheduleTitle{
+    margin-bottom: 3rem;
+    font-size: 3rem;
+    color: #27187E;
+}
+
+.home_scheduleGrid{
+    /*grid-template-columns: auto repeat(auto-fill, minmax(150px, 1fr));*/
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, auto);
+    align-items: center;
+    margin-bottom: 3rem;
+
+    color: #AEB8FE;
+
+    grid-auto-flow: column;
+
+    /*background-color: #ffffff;*/
+    border-radius: 10px;
+    /*padding: 1rem 3rem;*/
+}
+
+.home_scheduleGrid div{
+    padding: 0.8rem 1.3rem;
+}
+
+.home_scheduleHeader{
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.home_scheduleHeader_Emptycell{
+
+}
+
+.home_scheduleHeader_Day{
+
+}
+
+.home_scheduleRow{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.home_scheduleRow_NumberOfLesson{
+
+}
+
+.home_scheduleRow_Lesson{
+
+}
+
+
+
+
+.home_home_schedule_firstColumn{
+    /*display: flex;*/
+    /*flex-direction: column;*/
+
+}
+
+.home_home_schedule_firstColumn_Empty{
+
+}
+
+.home_home_schedule_firstColumn_NumberLesson{
+
+}
+
+.home_scheduleColumn{
+
+}
+
+.home_scheduleColumn_Day{
+    text-align: center;
+}
+
+.home_scheduleColumn_Lesson{
+    /*color: #27187E;*/
+    /*border-radius: 10px;*/
+    /*padding: 0.8rem 1.3rem;*/
+}
+
+.home_scheduleColumn_Lesson_Active{
+    border: 1px solid #5E79FD;
+
+}
+
+.exit_button{
+    width: 300px;
+}
