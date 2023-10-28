@@ -14,6 +14,32 @@
     transition: box-shadow .3s ease-in-out;
 }
 
+.lessonPractice{
+    background-color: #FFA947;
+    border: .15rem solid #FF8600;
+}
+
+.lessonPractice .lesson_title{
+    color: #000000;
+}
+
+.lessonPractice .lesson_room{
+    color: rgba(0, 0, 0, 0.40);
+}
+
+.lessonLecture{
+    background-color: #AEB8FE;
+    border: .15rem solid #5E79FD;
+}
+
+.lessonLecture .lesson_title{
+    color: #27187E;
+}
+
+.lessonLecture .lesson_room{
+    color: #5E79FD;
+}
+
 .lesson_wrapper:hover{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
