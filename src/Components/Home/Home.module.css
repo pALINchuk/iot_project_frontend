@@ -22,8 +22,8 @@
     /*grid-template-columns: auto repeat(auto-fill, minmax(150px, 1fr));*/
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(6, auto);
+    grid-template-columns: 5rem repeat(6, calc((85vw - 5rem - (7 * 10px)) / 7));
+    grid-template-rows: 3rem repeat(5, auto);
     align-items: center;
     margin-bottom: 3rem;
 
@@ -31,13 +31,13 @@
 
     grid-auto-flow: column;
 
-    /*background-color: #ffffff;*/
     border-radius: 10px;
-    /*padding: 1rem 3rem;*/
+    border: 1px solid #AEB8FE;
+    padding: 1rem 0;
 }
 
 .home_scheduleGrid div{
-    padding: 0.8rem 1.3rem;
+    /*padding: 0.8rem 1.3rem;*/
 }
 
 .home_scheduleHeader{
@@ -83,7 +83,7 @@
 }
 
 .home_home_schedule_firstColumn_NumberLesson{
-
+    text-align: center;
 }
 
 .home_scheduleColumn{
@@ -98,6 +98,7 @@
     /*color: #27187E;*/
     /*border-radius: 10px;*/
     /*padding: 0.8rem 1.3rem;*/
+    height: 100%;
 }
 
 .home_scheduleColumn_Lesson_Active{
