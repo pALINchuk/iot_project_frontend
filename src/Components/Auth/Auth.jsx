@@ -17,7 +17,7 @@ const Auth = () => {
 
     const [isStudent, setIsStudent] = useState(true)
 
-    const [response, setResponse] = useState('')
+    // const [response, setResponse] = useState('')
 
     const navigate = useNavigate()
 
@@ -33,9 +33,10 @@ const Auth = () => {
     const authHandler = async(e) => {
         e.preventDefault(); // Prevent default form submission behavior
         try{
-            const result = isStudent ? await AuthServiceStudent(login, password) : await AuthServiceTeacher(login, password)
-            setResponse(result.data)
-            console.log(result.data)
+            const result = isStudent ? await AuthServiceStudent(login, password)
+                                        : await AuthServiceTeacher(login, password)
+            // setResponse(result.data)
+            // console.log(result.data)
 
             localStorage.setItem('token', result.data.token)
 
@@ -68,7 +69,8 @@ const Auth = () => {
                             <img src={item1} alt='point1'/>
                             <h1>Перевір наявність</h1>
                         </div>
-                        <p>Перевірте наявність необхідного обладнання в режимі онлайн, без важких дзвінків і зайвого часу в черзі</p>
+                        <p>Перевірте наявність необхідного обладнання в режимі онлайн,
+                            без важких дзвінків і зайвого часу в черзі</p>
                     </div>
                     <div className={styles.auth_infoBlock_list_item}>
                         <div>
@@ -123,7 +125,12 @@ const Auth = () => {
                     </Button>
 
                 </div>
-                <p className={styles.auth_loginBlock_registration}>Немає акаунту? <NavLink to='/registration'>Зареєструйтеся.</NavLink></p>
+                <p className={styles.auth_loginBlock_registration}>
+                    Немає акаунту?
+                    <NavLink to='/registration'>
+                        Зареєструйтеся.
+                    </NavLink>
+                </p>
             </div>
         </div>
     )

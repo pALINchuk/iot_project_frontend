@@ -16,7 +16,7 @@ const Registration = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState(false)
-    const [response, setResponse] = useState('')
+    // const [response, setResponse] = useState('')
 
     const [groups, setGroups] = useState([])
 
@@ -31,8 +31,8 @@ const Registration = () => {
 
             try{
                 const result = isStudent ? await RegistrationServiceStudent(name, surname, email, password, group) : await RegistrationServiceTeacher(name, surname, email, password)
-                setResponse(result.data)
-                console.log(result.data); // Handle the response from the server
+                // setResponse(result.data)
+                // console.log(result.data); // Handle the response from the server
                 setGroup('')
                 setSurname('')
                 setName('')

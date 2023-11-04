@@ -1,0 +1,97 @@
+.classesDetails_wrapper{
+    color: #395bff;
+
+    min-height: 100vh;
+    width: 85vw;
+    max-width: 1900px;
+    margin: 0 auto;
+    font-size: 1.3rem;
+}
+
+.classesDetails_title{
+    margin-bottom: 3rem;
+}
+
+.classesDetails_wrapper h3{
+    margin-bottom: 1rem;
+}
+
+.classesDetails_mainBlock{
+    /*display: flex;*/
+    justify-content: space-between;
+}
+
+.classesDetails_class_informationBlock{
+    background-color: #AEB8FE;
+    border-radius: 1rem;
+    padding: 1rem 2.5rem;
+    max-width: 35rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.classesDetails_informationBlock_class_name{
+    color: #27187E;
+}
+
+.classesDetails_informationBlock_typeOfClass{
+    font-size: 1rem;
+}
+
+.classesDetails_informationBlock_nameOfClass{
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.classesDetails_informationBlock_details{
+    color: #5E79FD;
+}
+
+.classesDetails_class_bookedBlock{
+    background-color: #AEB8FE;
+    border-radius: 1rem;
+    padding: 1rem 2.5rem;
+    max-width: 35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.classesDetails_available_devices_block{
+    background-color: #AEB8FE;
+    border-radius: 1rem;
+    padding: 1rem 2.5rem;
+    max-width: 35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.classesDetails_available_device{
+    background-color: #F1F2F6;
+    padding: .3rem 1rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.classesDetails_device_model{
+    color: #D9D9D9;
+}
+
+.classesDetails_device_name{
+    color: #000000;
+}
+
+.classesDetails_available_device_book{
+    background-color: #27187E;
+    color: #F1F2F6;
+    font-weight: bold;
+    padding: .3rem 1.7rem;
+    border-radius: .5rem;
+    cursor: pointer;
+}
