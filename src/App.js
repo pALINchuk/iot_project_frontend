@@ -24,6 +24,7 @@ function App() {
             // console.log(schedule.data) //schedule.data.schedule[schedule.data.currentWeek]
             dispatch(setWholeSchedule(schedule.data))
             dispatch(setCurrentWeek(schedule.data.schedule[schedule.data.currentWeek]))
+            console.log(schedule.data)
         } catch (error) {
             if (error.response && error.response.status === 401) {
                 // Handle 401 Unauthorized error

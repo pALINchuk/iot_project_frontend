@@ -3,6 +3,9 @@ import {useNavigate, useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {AvailableDevices} from "../../services/AvailableDevicesService";
 import {useEffect, useState} from "react";
+import {BookingFullService} from "../../services/BookingFullService";
+import {BookingRequestsService} from "../../services/BookingRequestsService";
+import {BookingDeviceService} from "../../services/BookingDeviceService";
 
 const ClassDetails = () => {
     const {id, date} = useParams()
@@ -16,8 +19,33 @@ const ClassDetails = () => {
 
     const [classInformation, setClassInformation] = useState({})
 
-    const handleDeviceBooking = () => {
+    const [bookingsList, setBookingsList] = useState([])
 
+    const handleRequestButtonTeacher = async () => {
+
+    }
+
+    const handleDeviceBooking = async(deviceId) => {
+        console.log(typeof deviceId, deviceId)
+        try {
+            const token = localStorage.getItem('token');
+            await BookingDeviceService(deviceId, id, date, token)
+            console.log('booked')
+        } catch (error) {
+            if (error.response && error.response.status === 401) {
+                // Handle 401 Unauthorized error
+                console.log('Unauthorized access. Redirecting to login page...');
+                localStorage.removeItem('token');
+                navigate('/login')
+                // Redirect to the login page or perform other actions for unauthorized access
+            } else if(error.response && error.response.status === 404){
+                console.log('error')
+            }
+            else {
+                // Handle other types of errors (network error, server error, etc.)
+                console.error('Error occurred:', error);
+            }
+        }
     }
 
     const getClassInformation = (schedule, id, date) => {
@@ -34,11 +62,33 @@ const ClassDetails = () => {
         }
     }
 
+    const fetchBookings = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const result = isStudent ? await BookingFullService(id, date, token) : await BookingRequestsService(token)
+            setBookingsList(result.data)
+        } catch (error) {
+            if (error.response && error.response.status === 401) {
+                // Handle 401 Unauthorized error
+                console.log('Unauthorized access. Redirecting to login page...');
+                localStorage.removeItem('token');
+                navigate('/login')
+                // Redirect to the login page or perform other actions for unauthorized access
+            } else if(error.response && error.response.status === 404){
+                console.log('no bookings')
+            }
+            else {
+                // Handle other types of errors (network error, server error, etc.)
+                console.error('Error occurred:', error);
+            }
+        }
+    }
+
     const fetchAvailableDevices = async () => {
         try {
             const token = localStorage.getItem('token');
             const result = await AvailableDevices(id, date, token)
-            // console.log(result.data)
+            console.log('devices', result.data)
             setAvailableDevices(result.data)
         } catch (error) {
             if (error.response && error.response.status === 401) {
@@ -56,6 +106,7 @@ const ClassDetails = () => {
 
     useEffect(() => {
         fetchAvailableDevices()
+        fetchBookings()
         getClassInformation(currentWeekRedux, id, date)
     }, [currentWeekRedux])
 
@@ -78,24 +129,48 @@ const ClassDetails = () => {
                         </p>
                     </div>
                     <div className={styles.classesDetails_informationBlock_details}>
-                        <p>{classInformation ? classInformation.subject?.teacherFullName : ''}</p>
+                        <p>{isStudent ?
+                                (classInformation ? classInformation.subject?.teacherFullName : '')
+                            : (classInformation ? classInformation.groupCodes?.join(', ') : '')
+                            }
+                        </p>
                         <p>{date}</p>
                         <p>{classInformation ? classInformation.room?.number : ''}</p>
                     </div>
                 </div>
 
-                <h3>Заброньовано мною</h3>
+                <h3>{isStudent ? 'Заброньовано мною' : 'Запити на бронювання'}</h3>
                 <div className={styles.classesDetails_class_bookedBlock}>
-                    {/*{*/}
-                    {/*    availableDevices.map((device, index) => {*/}
-                    {/*        return <div className={styles.classesDetails_available_device} key={index}>*/}
-                    {/*            <div>*/}
-                    {/*                <p className={styles.classesDetails_device_model}>{device.deviceInfo.model}</p>*/}
-                    {/*                <p className={styles.classesDetails_device_name}>{device.deviceInfo.name}</p>*/}
-                    {/*            </div>*/}
-                    {/*        </div>*/}
-                    {/*    })*/}
-                    {/*}*/}
+                    {
+                        bookingsList.map((booking, index) => {
+                            return <div className={styles.classesDetails_available_device} key={index}>
+                                {console.log('fjdklsaf', booking)}
+                                <div>
+                                    <p className={styles.classesDetails_device_model}>{booking.device.deviceInfo.model}</p>
+                                    <p className={styles.classesDetails_device_name}>{booking.device.deviceInfo.name}</p>
+                                    <p className={styles.classesDetails_device_name}>status - {booking.status}</p>
+                                </div>
+                                <div className={styles.classesDetails_requestsTeacherButtons}>
+                                    {
+                                        isStudent ? '' : <div
+                                            className={styles.classesDetails_rejectRequestButton}
+                                            onClick={handleRequestButtonTeacher}
+                                        >
+                                            -
+                                        </div>
+                                    }
+                                    {
+                                        isStudent ? '' : <div
+                                                className={styles.classesDetails_approveRequestButton}
+                                                onClick={handleRequestButtonTeacher}
+                                            >
+                                                +
+                                            </div>
+                                    }
+                                </div>
+                            </div>
+                        })
+                    }
                 </div>
             </div>
 
@@ -106,15 +181,21 @@ const ClassDetails = () => {
                         availableDevices.map((device, index) => {
                             return <div className={styles.classesDetails_available_device} key={index}>
                                 <div>
-                                    <p className={styles.classesDetails_device_model}>{device.deviceInfo.model}</p>
+                                    <p className={styles.classesDetails_device_model}>
+                                        {device.deviceInfo.model}
+                                    </p>
                                     <p className={styles.classesDetails_device_name}>{device.deviceInfo.name}</p>
+                                    <p className={styles.classesDetails_device_name}>amount {device.amount}</p>
                                 </div>
-                                <div
-                                    className={styles.classesDetails_available_device_book}
-                                    onClick={handleDeviceBooking}
-                                >
-                                    +
-                                </div>
+                                {
+                                    isStudent ? <div
+                                        className={styles.classesDetails_available_device_book}
+                                        onClick={()=>handleDeviceBooking(device.id)}
+                                        >
+                                            +
+                                        </div>
+                                        : ''
+                                }
                             </div>
                         })
                     }

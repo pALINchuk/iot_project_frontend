@@ -95,3 +95,26 @@
     border-radius: .5rem;
     cursor: pointer;
 }
+
+.classesDetails_requestsTeacherButtons{
+    display: flex;
+    gap: 1rem;
+}
+
+.classesDetails_rejectRequestButton{
+    background-color: #AEB8FE;
+    color: #F1F2F6;
+    font-weight: bold;
+    padding: .3rem 1.7rem;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+.classesDetails_approveRequestButton{
+    background-color: #27187E;
+    color: #F1F2F6;
+    font-weight: bold;
+    padding: .3rem 1.7rem;
+    border-radius: .5rem;
+    cursor: pointer;
+}
