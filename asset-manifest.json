@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/iot_project_frontend/static/css/main.14e2f635.css",
-    "main.js": "/iot_project_frontend/static/js/main.058d215c.js",
+    "main.css": "/iot_project_frontend/static/css/main.e9ab9479.css",
+    "main.js": "/iot_project_frontend/static/js/main.1d67e572.js",
     "static/js/787.25fa2ab7.chunk.js": "/iot_project_frontend/static/js/787.25fa2ab7.chunk.js",
     "static/media/Auth_1.svg": "/iot_project_frontend/static/media/Auth_1.7033752844855260ae4432b0e9d518aa.svg",
     "static/media/Registration_1.svg": "/iot_project_frontend/static/media/Registration_1.64cf91ff3a993a1100fd5b7e62694d07.svg",
@@ -10,12 +10,12 @@
     "index.html": "/iot_project_frontend/index.html",
     "static/media/Auth_item2.svg": "/iot_project_frontend/static/media/Auth_item2.150c9b7ad6909a0a4dcb515df834ef93.svg",
     "static/media/Auth_item1.svg": "/iot_project_frontend/static/media/Auth_item1.a440623ac5d34024b18398cb01b55762.svg",
-    "main.14e2f635.css.map": "/iot_project_frontend/static/css/main.14e2f635.css.map",
-    "main.058d215c.js.map": "/iot_project_frontend/static/js/main.058d215c.js.map",
+    "main.e9ab9479.css.map": "/iot_project_frontend/static/css/main.e9ab9479.css.map",
+    "main.1d67e572.js.map": "/iot_project_frontend/static/js/main.1d67e572.js.map",
     "787.25fa2ab7.chunk.js.map": "/iot_project_frontend/static/js/787.25fa2ab7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.14e2f635.css",
-    "static/js/main.058d215c.js"
+    "static/css/main.e9ab9479.css",
+    "static/js/main.1d67e572.js"
   ]
 }
