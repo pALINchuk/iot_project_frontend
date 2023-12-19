@@ -12,6 +12,7 @@ import {ScheduleService} from "./services/ScheduleService";
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
 import Navbar from "./Components/Navbar/Navbar";
+import AddDevice from "./Components/AddDevice/AddDevice";
 
 function App() {
     const navigate = useNavigate()
@@ -69,6 +70,11 @@ function App() {
                         <Navbar/>
                         <ClassDetails/>
                     </>}
+                />
+                <Route path='/addDevice' element={<>
+                    <Navbar/>
+                    <AddDevice/>
+                </>}
                 />
                 <Route path='/login' element={<Auth/>}/>
                 <Route path='/registration' element={<Registration/>}/>

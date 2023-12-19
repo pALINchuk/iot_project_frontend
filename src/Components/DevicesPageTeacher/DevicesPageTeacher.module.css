@@ -1,0 +1,19 @@
+.devices_teacher_wrapper{
+    color: #27187E;
+
+    min-height: 100vh;
+    width: 85vw;
+    max-width: 1900px;
+    margin: 0 auto;
+    font-size: 1.3rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.addDeviceButton{
+
+}

@@ -131,21 +131,25 @@ const Registration = () => {
                         placeholder='Прізвище'
                         onChange={(e) => inputChangeHandler(e, 'surname')}
                         value={surname}
+                        type={'text'}
                     />
                     <Input
                         placeholder='Ім’я'
                         onChange={(e) => inputChangeHandler(e, 'name')}
                         value={name}
+                        type={'text'}
                     />
                     <Input
                         placeholder='E-mail'
                         onChange={(e) => inputChangeHandler(e, 'email')}
                         value={email}
+                        type={'text'}
                     />
                     <Input
                         placeholder='Пароль'
                         onChange={(e) => inputChangeHandler(e, 'password')}
                         value={password}
+                        type={'password'}
                     />
                     <Button
                         classes={styles.registration_signupBlockButton}

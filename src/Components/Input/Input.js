@@ -1,10 +1,10 @@
 import styles from './Input.module.css'
-const Input = ({placeholder, onChange, value, ...props}) => {
+const Input = ({placeholder, onChange, value, type, ...props}) => {
 
     return(
         // <div>
             <input className={styles.input}
-                   type="text"
+                   type={type}
                    placeholder={placeholder}
                    onChange={onChange}
                    value={value}

@@ -110,11 +110,13 @@ const Auth = () => {
                         placeholder={'Логін'}
                         onChange={(e) => inputChangeHandler(e, 'login')}
                         value={login}
+                        type={'text'}
                     />
                     <Input
                         placeholder={'Пароль'}
                         onChange={(e) => inputChangeHandler(e, 'password')}
                         value={password}
+                        type={'password'}
                     />
 
                     <Button
