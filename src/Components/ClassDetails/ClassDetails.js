@@ -6,6 +6,8 @@ import {useEffect, useState} from "react";
 import {BookingFullService} from "../../services/BookingFullService";
 import {BookingRequestsService} from "../../services/BookingRequestsService";
 import {BookingDeviceService} from "../../services/BookingDeviceService";
+import {ApproveBookingService} from "../../services/ApproveBookingService";
+import {RejectBookingService} from "../../services/RejectBookingService";
 
 const ClassDetails = () => {
     const {id, date} = useParams()
@@ -21,12 +23,31 @@ const ClassDetails = () => {
 
     const [bookingsList, setBookingsList] = useState([])
 
-    const handleRequestButtonTeacher = async () => {
-
+    const handleRequestButtonTeacher = async (e, bookingId, action) => {
+        try {
+            const token = localStorage.getItem('token');
+            // console.log('fdsalkfj', bookingId, action)
+            action==='approve' ? await ApproveBookingService(bookingId, token) : await RejectBookingService(bookingId, token)
+            console.log(`${action}d`)
+        } catch (error) {
+            if (error.response && error.response.status === 401) {
+                // Handle 401 Unauthorized error
+                console.log('Unauthorized access. Redirecting to login page...');
+                localStorage.removeItem('token');
+                navigate('/login')
+                // Redirect to the login page or perform other actions for unauthorized access
+            } else if(error.response && error.response.status === 404){
+                console.log('error')
+            }
+            else {
+                // Handle other types of errors (network error, server error, etc.)
+                console.error('Error occurred:', error);
+            }
+        }
     }
 
     const handleDeviceBooking = async(deviceId) => {
-        console.log(typeof deviceId, deviceId)
+        // console.log(typeof deviceId, deviceId)
         try {
             const token = localStorage.getItem('token');
             await BookingDeviceService(deviceId, id, date, token)
@@ -65,6 +86,7 @@ const ClassDetails = () => {
     const fetchBookings = async () => {
         try {
             const token = localStorage.getItem('token');
+            console.log('fjdklsaf', id, date)
             const result = isStudent ? await BookingFullService(id, date, token) : await BookingRequestsService(token)
             setBookingsList(result.data)
         } catch (error) {
@@ -111,10 +133,6 @@ const ClassDetails = () => {
     }, [currentWeekRedux])
 
     return <div className={styles.classesDetails_wrapper}>
-        {console.log(classInformation)}
-        <div className={styles.classesDetails_title}>
-            <h1>Вітаємо, {userRedux.name} {userRedux.surname}</h1>
-        </div>
 
         <div className={styles.classesDetails_mainBlock}>
             <div>
@@ -135,43 +153,47 @@ const ClassDetails = () => {
                             }
                         </p>
                         <p>{date}</p>
-                        <p>{classInformation ? classInformation.room?.number : ''}</p>
+                        <p>кімната {classInformation ? classInformation.room?.number : ''}</p>
                     </div>
                 </div>
 
                 <h3>{isStudent ? 'Заброньовано мною' : 'Запити на бронювання'}</h3>
-                <div className={styles.classesDetails_class_bookedBlock}>
-                    {
-                        bookingsList.map((booking, index) => {
-                            return <div className={styles.classesDetails_available_device} key={index}>
-                                {console.log('fjdklsaf', booking)}
-                                <div>
-                                    <p className={styles.classesDetails_device_model}>{booking.device.deviceInfo.model}</p>
-                                    <p className={styles.classesDetails_device_name}>{booking.device.deviceInfo.name}</p>
-                                    <p className={styles.classesDetails_device_name}>status - {booking.status}</p>
-                                </div>
-                                <div className={styles.classesDetails_requestsTeacherButtons}>
-                                    {
-                                        isStudent ? '' : <div
-                                            className={styles.classesDetails_rejectRequestButton}
-                                            onClick={handleRequestButtonTeacher}
-                                        >
-                                            -
+                {
+                    bookingsList.length>0 ?
+                        (<div className={styles.classesDetails_class_bookedBlock}>
+                            {
+                                bookingsList.map((booking, index) => {
+                                    return <div className={styles.classesDetails_available_device} key={index}>
+                                        <div>
+                                            <p className={styles.classesDetails_device_model}>{booking.device.deviceInfo.model}</p>
+                                            <p className={styles.classesDetails_device_name}>{booking.device.deviceInfo.name}</p>
+                                            <p className={styles.classesDetails_device_name}>status - {booking.status}</p>
                                         </div>
-                                    }
-                                    {
-                                        isStudent ? '' : <div
-                                                className={styles.classesDetails_approveRequestButton}
-                                                onClick={handleRequestButtonTeacher}
-                                            >
-                                                +
-                                            </div>
-                                    }
-                                </div>
-                            </div>
-                        })
-                    }
-                </div>
+                                        <div className={styles.classesDetails_requestsTeacherButtons}>
+                                            {
+                                                isStudent ? '' : <div
+                                                    className={styles.classesDetails_rejectRequestButton}
+                                                    onClick={(e) => handleRequestButtonTeacher(e, booking.id, 'reject')}
+                                                >
+                                                    -
+                                                </div>
+                                            }
+                                            {
+                                                isStudent ? '' : <div
+                                                        className={styles.classesDetails_approveRequestButton}
+                                                        onClick={(e) => handleRequestButtonTeacher(e, booking.id, 'approve')}
+                                                    >
+                                                        +
+                                                    </div>
+                                            }
+                                        </div>
+                                    </div>
+                                })
+                            }
+                        </div>
+                        )
+                        : <div>no records</div>
+                }
             </div>
 
             <div>
@@ -185,7 +207,7 @@ const ClassDetails = () => {
                                         {device.deviceInfo.model}
                                     </p>
                                     <p className={styles.classesDetails_device_name}>{device.deviceInfo.name}</p>
-                                    <p className={styles.classesDetails_device_name}>amount {device.amount}</p>
+                                    <p className={styles.classesDetails_device_amount}>Кількість: {device.amount}</p>
                                 </div>
                                 {
                                     isStudent ? <div

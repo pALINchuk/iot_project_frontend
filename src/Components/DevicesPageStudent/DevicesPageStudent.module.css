@@ -1,0 +1,9 @@
+.devices_student_wrapper{
+    color: #27187E;
+
+    min-height: 100vh;
+    width: 85vw;
+    max-width: 1900px;
+    margin: 0 auto;
+    font-size: 1.3rem;
+}

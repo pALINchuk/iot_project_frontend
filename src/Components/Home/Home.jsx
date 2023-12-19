@@ -32,7 +32,7 @@ const Home = () => {
 
     return (
         <div className={styles.home_wrapper}>
-            <h1>Вітаємо, {userRedux.name} {userRedux.surname}</h1>
+            {/*<h1>Вітаємо, {userRedux.name} {userRedux.surname}</h1>*/}
             {/*<p className={styles.home_scheduleTitle}>Розклад групи {userRedux.groupCode}</p>*/}
             <p className={styles.home_scheduleTitle}>Особистий розклад</p>
             <div className={styles.home_scheduleGrid}>
@@ -67,9 +67,9 @@ const Home = () => {
                 }
             </div>
             <div className={styles.exit_button}>
-                <Button
-                    onClick={exitHandler}
-                >Exit</Button>
+                {/*<Button*/}
+                {/*    onClick={exitHandler}*/}
+                {/*>Exit</Button>*/}
             </div>
         </div>
     )

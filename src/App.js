@@ -4,11 +4,14 @@ import {Routes, Route, useNavigate} from "react-router-dom"
 import Home from "./Components/Home/Home";
 import Registration from "./Components/Registration/Registration";
 import ClassDetails from "./Components/ClassDetails/ClassDetails";
+import DevicesPageStudent from "./Components/DevicesPageStudent/DevicesPageStudent"
+import DevicesPageTeacher from "./Components/DevicesPageTeacher/DevicesPageTeacher"
 import {UserInformationService} from "./services/UserInformationService";
 import {setCurrentWeek, setUser, setWholeSchedule} from "./Redux/actions";
 import {ScheduleService} from "./services/ScheduleService";
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
+import Navbar from "./Components/Navbar/Navbar";
 
 function App() {
     const navigate = useNavigate()
@@ -24,6 +27,8 @@ function App() {
             // console.log(schedule.data) //schedule.data.schedule[schedule.data.currentWeek]
             dispatch(setWholeSchedule(schedule.data))
             dispatch(setCurrentWeek(schedule.data.schedule[schedule.data.currentWeek]))
+            // dispatch(setCurrentWeek(schedule.data.schedule["Second"]))
+
             console.log(schedule.data)
         } catch (error) {
             if (error.response && error.response.status === 401) {
@@ -47,8 +52,24 @@ function App() {
       // <HashRouter>
         <div className="App">
             <Routes>
-                <Route path='/' element={<Home/>}/>
-                <Route path='/class/:id/:date' element={<ClassDetails/>}/>
+                <Route path='/' element={<>
+                        <Navbar/>
+                        <Home/>
+                    </>}
+                />
+                <Route path='/devicesPageStudent' element={<>
+                    <Navbar/>
+                    <DevicesPageStudent/>
+                </>}/>
+                <Route path='/devicesPageTeacher' element={<>
+                    <Navbar/>
+                    <DevicesPageTeacher/>
+                </>}/>
+                <Route path='/class/:id/:date' element={<>
+                        <Navbar/>
+                        <ClassDetails/>
+                    </>}
+                />
                 <Route path='/login' element={<Auth/>}/>
                 <Route path='/registration' element={<Registration/>}/>
                 <Route path='*' element={<h1>Not found!</h1>}/>
