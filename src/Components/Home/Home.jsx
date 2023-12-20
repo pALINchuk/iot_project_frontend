@@ -1,12 +1,16 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styles from './Home.module.css'
 import Button from "../Button/Button";
 import {useNavigate} from "react-router-dom";
 import Lesson from "../Lesson/Lesson";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {UserInformationService} from "../../services/UserInformationService";
+import {setCurrentWeek, setUser, setWholeSchedule} from "../../Redux/actions";
+import {ScheduleService} from "../../services/ScheduleService";
 
 const Home = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const userRedux = useSelector(state => state.user)
     const currentWeekRedux = useSelector(state => state.currentWeek)
@@ -29,6 +33,37 @@ const Home = () => {
             return object ? {...object} : null
         })
     }
+
+    const fetchData = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const result = await UserInformationService(token)
+            dispatch(setUser(result.data))
+
+            const schedule = await ScheduleService(token)
+            // console.log(schedule.data) //schedule.data.schedule[schedule.data.currentWeek]
+            dispatch(setWholeSchedule(schedule.data))
+            dispatch(setCurrentWeek(schedule.data.schedule[schedule.data.currentWeek]))
+            // dispatch(setCurrentWeek(schedule.data.schedule["Second"]))
+
+            console.log(schedule.data)
+        } catch (error) {
+            if (error.response && error.response.status === 401) {
+                // Handle 401 Unauthorized error
+                console.log('Unauthorized access. Redirecting to login page...');
+                localStorage.removeItem('token');
+                navigate('/login')
+                // Redirect to the login page or perform other actions for unauthorized access
+            } else {
+                // Handle other types of errors (network error, server error, etc.)
+                console.error('Error occurred:', error);
+            }
+        }
+    }
+
+    useEffect(() => {
+        fetchData()
+    }, [dispatch])
 
     return (
         <div className={styles.home_wrapper}>
